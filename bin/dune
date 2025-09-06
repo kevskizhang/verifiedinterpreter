@@ -1,0 +1,4 @@
+(executable
+ (public_name vm_ocaml)
+ (name main)
+ (libraries vm_ocaml))

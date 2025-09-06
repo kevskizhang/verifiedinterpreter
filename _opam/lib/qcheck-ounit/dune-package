@@ -1,0 +1,36 @@
+(lang dune 3.20)
+(name qcheck-ounit)
+(version 0.26)
+(sections (lib .) (libexec .) (doc ../../doc/qcheck-ounit))
+(files
+ (lib
+  (META
+   QCheck_ounit.ml
+   QCheck_ounit.mli
+   dune-package
+   opam
+   qCheck_ounit.cmi
+   qCheck_ounit.cmt
+   qCheck_ounit.cmti
+   qCheck_ounit.cmx
+   qcheck_ounit.a
+   qcheck_ounit.cma
+   qcheck_ounit.cmxa))
+ (libexec (qcheck_ounit.cmxs))
+ (doc (CHANGELOG.md LICENSE README.adoc)))
+(library
+ (name qcheck-ounit)
+ (kind normal)
+ (archives (byte qcheck_ounit.cma) (native qcheck_ounit.cmxa))
+ (plugins (byte qcheck_ounit.cma) (native qcheck_ounit.cmxs))
+ (native_archives qcheck_ounit.a)
+ (requires unix qcheck-core qcheck-core.runner ounit2)
+ (modes byte native)
+ (modules
+  (singleton
+   (obj_name qCheck_ounit)
+   (visibility public)
+   (source
+    (path QCheck_ounit)
+    (intf (path QCheck_ounit.mli))
+    (impl (path QCheck_ounit.ml))))))

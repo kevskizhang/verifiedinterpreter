@@ -1,0 +1,36 @@
+(lang dune 3.20)
+(name qcheck-alcotest)
+(version 0.26)
+(sections (lib .) (libexec .) (doc ../../doc/qcheck-alcotest))
+(files
+ (lib
+  (META
+   QCheck_alcotest.ml
+   QCheck_alcotest.mli
+   dune-package
+   opam
+   qCheck_alcotest.cmi
+   qCheck_alcotest.cmt
+   qCheck_alcotest.cmti
+   qCheck_alcotest.cmx
+   qcheck_alcotest.a
+   qcheck_alcotest.cma
+   qcheck_alcotest.cmxa))
+ (libexec (qcheck_alcotest.cmxs))
+ (doc (CHANGELOG.md LICENSE README.adoc)))
+(library
+ (name qcheck-alcotest)
+ (kind normal)
+ (archives (byte qcheck_alcotest.cma) (native qcheck_alcotest.cmxa))
+ (plugins (byte qcheck_alcotest.cma) (native qcheck_alcotest.cmxs))
+ (native_archives qcheck_alcotest.a)
+ (requires unix qcheck-core qcheck-core.runner alcotest)
+ (modes byte native)
+ (modules
+  (singleton
+   (obj_name qCheck_alcotest)
+   (visibility public)
+   (source
+    (path QCheck_alcotest)
+    (intf (path QCheck_alcotest.mli))
+    (impl (path QCheck_alcotest.ml))))))

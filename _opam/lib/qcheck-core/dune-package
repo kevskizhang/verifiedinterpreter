@@ -1,0 +1,69 @@
+(lang dune 3.20)
+(name qcheck-core)
+(version 0.26)
+(sections (lib .) (libexec .) (doc ../../doc/qcheck-core))
+(files
+ (lib
+  (META
+   QCheck.ml
+   QCheck.mli
+   QCheck2.ml
+   QCheck2.mli
+   dune-package
+   opam
+   qCheck.cmi
+   qCheck.cmt
+   qCheck.cmti
+   qCheck.cmx
+   qCheck2.cmi
+   qCheck2.cmt
+   qCheck2.cmti
+   qCheck2.cmx
+   qcheck_core.a
+   qcheck_core.cma
+   qcheck_core.cmxa
+   runner/QCheck_base_runner.ml
+   runner/QCheck_base_runner.mli
+   runner/qCheck_base_runner.cmi
+   runner/qCheck_base_runner.cmt
+   runner/qCheck_base_runner.cmti
+   runner/qCheck_base_runner.cmx
+   runner/qcheck_runner.a
+   runner/qcheck_runner.cma
+   runner/qcheck_runner.cmxa))
+ (libexec (qcheck_core.cmxs runner/qcheck_runner.cmxs))
+ (doc (CHANGELOG.md LICENSE README.adoc odoc-pages/index.mld)))
+(library
+ (name qcheck-core)
+ (kind normal)
+ (archives (byte qcheck_core.cma) (native qcheck_core.cmxa))
+ (plugins (byte qcheck_core.cma) (native qcheck_core.cmxs))
+ (native_archives qcheck_core.a)
+ (requires unix)
+ (modes byte native)
+ (modules
+  (unwrapped
+   (module
+    (obj_name qCheck)
+    (visibility public)
+    (source (path QCheck) (intf (path QCheck.mli)) (impl (path QCheck.ml))))
+   (module
+    (obj_name qCheck2)
+    (visibility public)
+    (source (path QCheck2) (intf (path QCheck2.mli)) (impl (path QCheck2.ml)))))))
+(library
+ (name qcheck-core.runner)
+ (kind normal)
+ (archives (byte runner/qcheck_runner.cma) (native runner/qcheck_runner.cmxa))
+ (plugins (byte runner/qcheck_runner.cma) (native runner/qcheck_runner.cmxs))
+ (native_archives runner/qcheck_runner.a)
+ (requires qcheck-core)
+ (modes byte native)
+ (modules
+  (singleton
+   (obj_name qCheck_base_runner)
+   (visibility public)
+   (source
+    (path QCheck_base_runner)
+    (intf (path runner/QCheck_base_runner.mli))
+    (impl (path runner/QCheck_base_runner.ml))))))

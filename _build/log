@@ -1,0 +1,25 @@
+# dune test
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /home/kevskizhang/.cache/dune/db
+# Workspace root: /home/kevskizhang/verifiedinterpreter
+# Auto-detected concurrency: 20
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/kevskizhang/verifiedinterpreter/_opam/bin/ocamlc.opt -config > /tmp/dune_13b0ba_output
+$ (cd _build/default/test && ./properties.exe)
+> qcheck random seed: 245545226
+> Testing `vm-properties'.
+> This run has ID `KWZCSVT7'.
+>
+>   [OK]          props          0   vm == spec (Iconst/Add/Halt).
+>
+> Full test results in `~/verifiedinterpreter/_build/default/test/_build/_tests/vm-properties'.
+> Test Successful in 0.002s. 1 test run.

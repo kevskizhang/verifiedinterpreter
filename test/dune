@@ -1,0 +1,4 @@
+(test
+ (name properties)
+ (modules properties prog_gen)
+ (libraries base qcheck alcotest qcheck-alcotest vm_ocaml))

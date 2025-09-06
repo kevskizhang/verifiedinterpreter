@@ -1,0 +1,5 @@
+(library
+ (name vm_ocaml)
+ (public_name vm_ocaml)
+ (libraries base)
+ (modules value instr prog spec_interp vm verifier))
