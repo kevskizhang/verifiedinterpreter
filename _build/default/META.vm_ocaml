@@ -1,6 +1,0 @@
-description = ""
-requires = "base"
-archive(byte) = "vm_ocaml.cma"
-archive(native) = "vm_ocaml.cmxa"
-plugin(byte) = "vm_ocaml.cma"
-plugin(native) = "vm_ocaml.cmxs"

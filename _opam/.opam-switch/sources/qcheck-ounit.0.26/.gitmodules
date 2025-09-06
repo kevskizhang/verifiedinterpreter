@@ -1,3 +1,0 @@
-[submodule "check-fun"]
-	path = check-fun
-	url = https://github.com/jmid/qcheck-fun

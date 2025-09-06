@@ -1,0 +1,24 @@
+# dune build artifacts
+/_build/
+/_log/
+/_install/
+/_cache/
+
+# opam local switch
+/_opam/
+
+# editor/tooling
+*.merlin
+*.install
+*.cmo
+*.cmi
+*.cmx
+*.cmt
+*.cmti
+*.o
+*.a
+*.annot
+.DS_Store
+
+# fuzzing/crowbar corpora (optional)
+_crowbar/
